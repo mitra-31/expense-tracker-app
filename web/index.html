@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Tracker</title>
+</head>
+
+<body>
+
+    <div class="container text-center mt-2">
+        <div class="row">
+            <div class="col-mt-4">
+                <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" data-bs-whatever="@fat">Add</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add Amount</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="" id="add-data">
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Amount:</label>
+                                            <input type="text" class="form-control" id="amount">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="message-text" class="col-form-label">Description:</label>
+                                            <textarea class="form-control" id="desc"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" id="close"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <input type="button" class="btn btn-primary" onclick="add()" value="Submit">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="createchart()" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                   Show Pie Chart
+                  </button>
+            </div>
+            <div class="col-md-12 mt-10">
+
+                <div id="table-content" class="text-center">
+                    <table class="table table-borderless table-striped">
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Desc</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img  id="img" width="700" >
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+            </div>
+        </div>
+    </div>
+    <script src="/eel.js"></script>
+    <script>
+
+        eel.expose(reload);
+        function reload() {
+            document.getElementById("close").click();
+            fetch("tracker.json")
+                .then(response => response.json())
+                .then(data => {
+                    recent = Object.keys(data).sort().reverse()[0];
+                    table_create(data[recent]);
+                })
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
