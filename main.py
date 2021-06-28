@@ -3,6 +3,7 @@ import eel
 import datetime
 import jsonupdate as ju
 import sizes as s
+import constants as c
 import io
 from base64 import b64encode
 from PIL import Image 
@@ -25,7 +26,9 @@ import matplotlib.pyplot as plt
 @eel.expose
 def create():
 # Data to plot
-    labels,sizes = s.size()
+    labels,sizes,total_amt,from_date,to_date = s.size()
+    from_date = "-".join([str(from_date[0]),c.month[from_date[1]-1],str(from_date[2])])
+    to_date = "-".join([str(to_date[0]),c.month[to_date[1]-1],str(to_date[2])])
     colors = ['blue',  'green', 'red']
     explode = (0, 0, 0)  # explode 1st slice
 
@@ -41,7 +44,7 @@ def create():
     image.save(buffers,format = "png")
     img_str = b64encode(buffers.getvalue())
     img_src = f"data:image/png;base64, {str(img_str)[2:-1]}"
-    return img_src
+    return img_src,total_amt,from_date,to_date
 
 
 

@@ -48,9 +48,10 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" onclick="createchart()" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                   Show Pie Chart
-                  </button>
+                <button type="button" class="btn btn-primary" onclick="createchart()" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal1">
+                    Show Pie Chart
+                </button>
             </div>
             <div class="col-md-12 mt-10">
 
@@ -72,24 +73,39 @@
             <div class="col-sm-12">
                 <!-- Button trigger modal -->
 
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <img  id="img" width="700" >
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Pie Chart</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img id="img" width="700">
+                                <div class=".col-md-4">
+
+                                    <h4 class="displat-3 mt-2" style="font-weight: 1.2rem;">Total Spent : <span
+                                            style="font-weight: 1.1rem;" id="total"></span> </h4>
+                                </div>
+                                <div class=".col-md-4 .ml-auto">
+
+                                    <h4 class="displat-3 mt-2" style="font-weight: 1.2rem;">From : <span
+                                            style="font-weight: 1.1rem;" id="from"></span> </h4>
+
+                                    <h4 class="displat-3 mt-2" style="font-weight: 1.2rem;">To : <span
+                                            style="font-weight: 1.1rem;" id="to"></span> </h4>
+                                </div>  
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -99,6 +115,7 @@
         eel.expose(reload);
         function reload() {
             document.getElementById("close").click();
+
             fetch("tracker.json")
                 .then(response => response.json())
                 .then(data => {

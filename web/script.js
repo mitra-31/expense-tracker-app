@@ -35,7 +35,12 @@ function createchart()
 
 function img(base64)
 {
-    document.getElementById("img").src = base64;
+    console.log(base64);
+    document.getElementById("img").src = base64[0];
+    document.getElementById("total").innerHTML = base64[1];
+    document.getElementById("from").innerHTML = base64[2];
+    document.getElementById("to").innerHTML = base64[3];
+
 }
 
 

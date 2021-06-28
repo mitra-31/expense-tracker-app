@@ -12,7 +12,7 @@ def create():
 
     # Plot
     plt.pie(sizes, explode=explode, labels=labels, colors=colors,
-    autopct='%1.1f%%', shadow=True, startangle=140)
+    autopct='%1.1f%%', startangle=140)
 
     plt.axis('equal')
     eel.piechart(plt.show())
